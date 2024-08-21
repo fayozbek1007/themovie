@@ -70,3 +70,36 @@ export const navbarmenu = [{
         ]
     },
 ]
+
+export const categories = [{
+        id: 1,
+        name: 'Today',
+    },
+    {
+        id: 2,
+        name: 'This Week',
+    },
+]
+
+export const menuhover = [
+    {
+        id:1,
+        name:"Popular",
+    },
+    {
+        id:2,
+        name:"Streaming",
+    },
+    {
+        id:3,
+        name:"On TV",
+    },
+    {
+        id:4,
+        name:"For Rent"
+    },
+    {
+        id:5,
+        name:"In Theaters"
+    },
+]

@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route element={<DashNavFootOut />} >
           <Route path='/' element={<Home />} />
-          <Route path='/about' element={<About/>} />
+          <Route path='/about' element={<About />} />
         </Route>
       </Routes>
     </BrowserRouter>
