@@ -1,0 +1,75 @@
+import React, { useState, useEffect } from 'react';
+import { MdArrowForwardIos } from "react-icons/md";
+import axios from 'axios';
+
+const Popular = () => {
+    const [data, setData] = useState([]);
+    const baseURL = 'https://image.tmdb.org/t/p/w500';
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('https://api.themoviedb.org/3/trending/movie/day?api_key=eafe1f3a13d089d87f149cb4c9b3ced2');
+                setData(response.data.results);
+            } catch (error) {
+                console.error('Xatolik sodir bo‘ldi:', error);
+            }
+        };
+        fetchData();
+    }, []);
+
+    return (
+        <div className='w-[1400px] py-[30px] px-[40px] mx-[auto] my-0'>
+            <h1 className='font-[600] text-[27px]'>Popular Movies</h1>
+            <div className='flex gap-[30px] mt-[20px]'>
+                <div className='w-[258.08px] h-[]'>
+                    <div className='flex items-center justify-between px-[16px] py-[14px] border-neutral-300 border-[1px] rounded-[8px] shadow-lg'>
+                        <p className='text-[20px] font-[600]'>
+                            Sort
+                        </p>
+                        <span>
+                            <MdArrowForwardIos />
+                        </span>
+                    </div>
+                    <div className='mt-[15px] flex items-center justify-between px-[16px] py-[14px] border-neutral-300 border-[1px] rounded-[8px] shadow-lg'>
+                        <p className='text-[20px] font-[600]'>Where To Watch</p>
+                        <span>
+                            <MdArrowForwardIos />
+                        </span>
+                    </div>
+                    <div className='mt-[15px] flex items-center justify-between px-[16px] py-[14px] border-neutral-300 border-[1px] rounded-[8px] shadow-lg'>
+                        <p className='text-[20px] font-[600]'>Filters</p>
+                        <span>
+                            <MdArrowForwardIos />
+                        </span>
+                    </div>
+                    <button className='text-[20px] font-[600] w-[258px] text-center py-[10px] rounded-[32px] bg-gray-500 mt-[15px] text-white'>
+                        Search
+                    </button>
+                </div>
+                <div className='w-[1052px] grid grid-cols-5'>
+                    {data.map(movie => (
+                        <div key={movie.id} className='shadow-lg inline-block w-[181px] truncate mr-5 border-[1px] border-b-slate-400 rounded-[8px] mb-[30px]'>
+                            <img
+                                className='w-[181px] h-[273px] rounded-lg'
+                                src={`${baseURL}${movie.poster_path}`}
+                                alt={movie.title}
+                            />
+                            <div className='mt-2 p-2 w-[150px] h-[70px] overflow-hidden'>
+                                <h1 className='text-[18px] font-bold truncate'>{movie.title}</h1>
+                                <p className='text-xs'>{movie.release_date}</p>
+                            </div>
+                        </div>
+                    ))}
+                    <div className='w-[1000px] text-center py-[10px] rounded-[30px] bg-[#01B4E4]'>
+                        <button className='text-[30px] font-[800] text-white'>
+                            Load More
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default Popular;

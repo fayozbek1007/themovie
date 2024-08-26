@@ -1,1 +1,21 @@
-.search-img{}
+.no-horizontal-scroll {
+    overflow-x: hidden;
+}
+
+.no-vertical-scroll {
+    overflow-y: hidden;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+    height: 10px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: #747171;
+    border-radius: 30px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+}
+

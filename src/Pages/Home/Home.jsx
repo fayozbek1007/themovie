@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react';
 import axios from 'axios';
+import { Link } from 'react-router-dom'; // Link import qilamiz
 import { categories } from '../../Js/navbarmenu';
 import PopHoverBg from './PopHoverBg';
 import Search from '../../components/Search/search';
+import FreeWatch from './FreeWatch';
 
 const Home = () => {
     const [data, setData] = useState([]);
-    const [thisdata, Setthisdata] = useState([]);
+    const [thisdata, setThisData] = useState([]);
+
     const baseURL = 'https://image.tmdb.org/t/p/w500';
 
     useEffect(() => {
@@ -15,6 +18,7 @@ const Home = () => {
             try {
                 const response = await axios.get('https://api.themoviedb.org/3/trending/movie/day?api_key=eafe1f3a13d089d87f149cb4c9b3ced2');
                 setData(response.data.results);
+                console.log(response.data.results);
             } catch (error) {
                 console.error('Xatolik sodir bo‘ldi:', error);
             }
@@ -26,14 +30,13 @@ const Home = () => {
         const weekData = async () => {
             try {
                 const thisres = await axios.get('https://api.themoviedb.org/3/trending/movie/week?api_key=eafe1f3a13d089d87f149cb4c9b3ced2');
-                Setthisdata(thisres.data.results);
+                setThisData(thisres.data.results);
             } catch (error) {
                 console.error('Xatolik sodir bo‘ldi:', error);
             }
         };
         weekData();
     }, []);
-
 
     return (
         <div className="w-[1370px] mx-[auto] my-0 mt-[30px]">
@@ -68,38 +71,50 @@ const Home = () => {
                 >
                     {categories.map(({ name }) => (
                         <div key={name}>
-                            <TabPanel className="rounded-xl  p-3">
-                                <div className='overflow-x-auto whitespace-nowrap gap-[20px] snap-x-[30px] w-[1370px]'>
+                            <TabPanel className="rounded-xl p-3">
+                                <div className='overflow-x-auto whitespace-nowrap gap-[20px] snap-x-[30px] w-full scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-transparent'>
                                     {data.map(movie => (
-                                        <div key={movie.id} className='inline-block w-[170px] mt-[10px] truncate'>
-                                            <img className='w-36 h-56 rounded-lg' src={`${baseURL}${movie.poster_path}`} alt={movie.title} />
-                                            <div className='mt-2 p-2 w-[150px] h-[70px] overflow-hidden'>
-                                                <h1 className='text-sm font-bold truncate'>{movie.title}</h1>
-                                                <p className='text-xs'>{movie.release_date}</p>
+                                        <Link to={`/movie/${movie.id}`} key={movie.id}>
+                                            <div className='inline-block w-[150px] truncate mr-5'>
+                                                <img
+                                                    className='w-[150px] h-[225px] rounded-lg'
+                                                    src={`${baseURL}${movie.poster_path}`}
+                                                    alt={movie.title}
+                                                />
+                                                <div className='mt-2 p-2 w-[150px] h-[70px] overflow-hidden'>
+                                                    <h1 className='text-sm font-bold truncate'>{movie.title}</h1>
+                                                    <p className='text-xs'>{movie.release_date}</p>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </Link>
                                     ))}
                                 </div>
                             </TabPanel>
-                            <TabPanel className="rounded-xl  p-3">
-                                <div className='overflow-x-auto whitespace-nowrap gap-[20px] snap-x-[30px] w-[1370px]'>
+
+                            <TabPanel className="rounded-xl p-3">
+                                <div className='overflow-x-auto whitespace-nowrap gap-[20px] snap-x-[30px] w-[1370px] scrollbar-thin'>
                                     {thisdata.map(person => (
-                                        <div key={person.id} className='inline-block w-[170px] mt-[10px] truncate'>
-                                            <img className='w-36 h-56 rounded-lg' src={`${baseURL}${person.backdrop_path}`} alt={person.name} />
-                                            <div className='mt-2 p-2 w-[150px] h-[70px] overflow-hidden'>
-                                                <h1 className='text-sm font-bold truncate'>{person.title}</h1>
-                                                <p className='text-xs'>{person.release_date}</p>
+                                        <Link to={`/movie/${person.id}`} key={person.id}>
+                                            <div className='inline-block w-[170px] truncate mr-5'>
+                                                <img
+                                                    className='w-[150px] h-[225px] rounded-lg'
+                                                    src={`${baseURL}${person.backdrop_path}`} alt={person.title}
+                                                />
+                                                <div className='mt-2 p-2 w-[150px] h-[70px] overflow-hidden'>
+                                                    <h1 className='text-sm font-bold truncate'>{person.title}</h1>
+                                                    <p className='text-xs'>{person.release_date}</p>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </Link>
                                     ))}
                                 </div>
                             </TabPanel>
                         </div>
                     ))}
                 </TabPanels>
-
             </TabGroup>
             <PopHoverBg />
+            <FreeWatch />
         </div>
     );
 }
