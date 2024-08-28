@@ -1,9 +1,10 @@
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import CircularProgressWithLabel from '../../components/Fozi/Foiz';
 
 const AboutPopular = () => {
-    const { id } = useParams(); // URL dan ID ni olamiz
+    const { id } = useParams();
     const [popmovie, setPopmovie] = useState(null);
     const baseURL = 'https://image.tmdb.org/t/p/w500';
 
@@ -11,15 +12,16 @@ const AboutPopular = () => {
         const fetchpop = async () => {
             try {
                 const respop = await axios.get('https://api.themoviedb.org/3/trending/tv/day?api_key=eafe1f3a13d089d87f149cb4c9b3ced2');
+                
                 const selectedMovie = respop.data.results.find(movie => movie.id.toString() === id);
-                setPopmovie(selectedMovie); 
+                setPopmovie(selectedMovie);
+                console.log("No name",respop.data.results);
             } catch (error) {
                 console.log('Xatolik bor:', error);
             }
         };
         fetchpop();
-    }, [id]); 
-
+    }, [id]);
     if (!popmovie) return <div>Yuklanmaoqada...</div>;
 
     return (
@@ -50,15 +52,18 @@ const AboutPopular = () => {
                         </div>
                         <div className='w-[1020px] h-[510px] pl-[40px]'>
                             <div className='flex gap-[15px] items-center'>
-                                <h1 className='text-white font-[700] text-[35.2px]'>{popmovie.title}</h1>
-                                <p className='text-white font-[700] text-[35.2px]'>({popmovie.release_date})</p>
+                                <h1 className='text-white font-[700] text-[35.2px]'>{popmovie.name}</h1>
+                                <p className='text-white font-[700] text-[35.2px]'>({popmovie.first_air_date})</p>
                             </div>
                             <div className='flex gap-[10px] items-center'>
                                 <p className='text-stone-400 font-[500] border-[2px] border-stone-500 rounded-[4px] px-[3px] py-[1px]'>{popmovie.origin_country}</p>
-                                <p className='text-stone-400 font-[500] text-[17px]'>( {popmovie.release_date} )</p>
+                                <p className='text-stone-400 font-[500] text-[17px]'>( {popmovie.first_air_date} )</p>
                             </div>
                             <div className='mt-[20px]'>
-                                <em className='font-[600] text-[17.6px] text-stone-400'>Say your prayers</em>
+                                <div className='flex items-center gap-[20px]'>
+                                    <CircularProgressWithLabel value={popmovie.vote_average * 10} />
+                                    <em className='font-[600] text-[17.6px] text-stone-400'>Say your prayers</em>
+                                </div>
                                 <p className='mt-[20px] font-[600] text-[20px] text-stone-300'>Overview</p>
                                 <p className='text-stone-300 text-[18px] font-[500]'>{popmovie.overview}</p>
                                 <div className='flex items-center mt-[20px] gap-[15px]'>

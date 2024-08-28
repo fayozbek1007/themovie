@@ -1,75 +1,41 @@
-export const navbarmenu = [{
-        id: 1,
-        title: "Movies",
-        dashint: [{
-                id: 1,
-                dashtitle: "Popular",
-            },
-            {
-                id: 2,
-                dashtitle: "Now Playing",
-            },
-            {
-                id: 3,
-                dashtitle: "Upcoming",
-            },
-            {
-                id: 4,
-                dashtitle: "Top Rated",
-            },
-        ]
+export const navbarmenu = [
+    {
+      id: 1,
+      title: "movies",
+      dashint: [
+        { id: 1, dashtitle: "popular" },
+        { id: 2, dashtitle: "nowPlaying" },
+        { id: 3, dashtitle: "upcoming" },
+        { id: 4, dashtitle: "topRated" },
+      ],
     },
     {
-        id: 2,
-        title: "TV Shows",
-        dashint: [{
-                id: 1,
-                dashtitle: "Popular",
-            },
-            {
-                id: 2,
-                dashtitle: "Airing Today",
-            },
-            {
-                id: 3,
-                dashtitle: "On TV",
-            },
-            {
-                id: 4,
-                dashtitle: "Top Rated",
-            },
-        ]
+      id: 2,
+      title: "tvShows",
+      dashint: [
+        { id: 1, dashtitle: "popular" },
+        { id: 2, dashtitle: "airingToday" },
+        { id: 3, dashtitle: "onTV" },
+        { id: 4, dashtitle: "topRated" },
+      ],
     },
     {
-        id: 3,
-        title: "People",
-        dashint: [{
-            id: 1,
-            dashtitle: "Popular  People",
-        }, ]
+      id: 3,
+      title: "people",
+      dashint: [{ id: 1, dashtitle: "popularPeople" }],
     },
     {
-        id: 4,
-        title: "More",
-        dashint: [{
-                id: 1,
-                dashtitle: "Discussion",
-            },
-            {
-                id: 2,
-                dashtitle: "Leaderboard",
-            },
-            {
-                id: 3,
-                dashtitle: "Support",
-            },
-            {
-                id: 4,
-                dashtitle: "API",
-            },
-        ]
+      id: 4,
+      title: "more",
+      dashint: [
+        { id: 1, dashtitle: "discussion" },
+        { id: 2, dashtitle: "leaderboard" },
+        { id: 3, dashtitle: "support" },
+        { id: 4, dashtitle: "api" },
+      ],
     },
-]
+  ];
+  
 
 export const categories = [{
         id: 1,
@@ -103,3 +69,5 @@ export const menuhover = [
         name:"In Theaters"
     },
 ]
+
+

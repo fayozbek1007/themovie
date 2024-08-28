@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next'; 
 import { navbarmenu } from '../../Js/navbarmenu';
 
 const Navbar = () => {
+    const { t, i18n } = useTranslation(); 
+    const [showLanguages, setShowLanguages] = useState(false); 
+
+    const changeLanguage = (lng) => {
+        i18n.changeLanguage(lng);
+        setShowLanguages(false);
+    };
+
     return (
         <div className='w-[100%] flex bg-[rgb(3,37,65)] my-0 mx-[auto] h-[64px]'>
             <div className='z-[12] flex w-[1300px] my-0 mx-[auto]  px-[35px] justify-between items-center'>
@@ -15,7 +24,7 @@ const Navbar = () => {
                             {navbarmenu.map((menu) => (
                                 <li key={menu.id} className="gap-[10px] relative group mr-5 ">
                                     <a href="#" className="pl-[5px] block text-white">
-                                        {menu.title}
+                                        {t(menu.title)}
                                     </a>
                                     {menu.dashint && menu.dashint.length > 0 && (
                                         <ul className="absolute left-0 mt-[0] hidden w-40 rounded-[10px] bg-white shadow-lg group-hover:block overflow-hidden">
@@ -25,7 +34,7 @@ const Navbar = () => {
                                                         to={`/${dash.dashtitle.toLowerCase().replace(/\s/g, '-')}`}
                                                         className="block px-4 py-2 text-black hover:bg-gray-200"
                                                     >
-                                                        {dash.dashtitle}
+                                                        {t(dash.dashtitle)}
                                                     </Link>
                                                 </li>
                                             ))}
@@ -38,12 +47,21 @@ const Navbar = () => {
                 </div>
                 <div className='flex items-center w-[310.85px] h-[40px] gap-[35px]'>
                     <p className='text-white box-border text-[32.4px] font-[900]'>+</p>
-                    <div className="w-[32px] h-[26px] bg-none">
-                        <form className='bg-none border-white border-[1px] py-[2px] px-[5px] rounded-[5px] hover:bg-white text-[16px]'>
-                            <p className='text-white font-[600] hover:text-[rgb(3,37,65)]'>
-                                UZ
-                            </p>
-                        </form>
+                    <div className="relative">
+                        <button
+                            className='bg-none border-white border-[1px] py-[2px] px-[5px] rounded-[5px] hover:bg-white text-[16px] text-white font-[600] hover:text-[rgb(3,37,65)]'
+                            onClick={() => setShowLanguages(!showLanguages)} 
+                        >
+                            {i18n.language.toUpperCase()}
+                        </button>
+                        {showLanguages && (
+                            <ul className="absolute right-0 mt-2 w-[80px] bg-white rounded-md shadow-lg text-black">
+                                <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer" onClick={() => changeLanguage('en')}>EN</li>
+                                <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer" onClick={() => changeLanguage('uz')}>UZ</li>
+                                <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer" onClick={() => changeLanguage('fr')}>FR</li>
+                                <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer" onClick={() => changeLanguage('ru')}>RU</li>
+                            </ul>
+                        )}
                     </div>
                     <p className='font-[600] text-[16px] text-white'>
                         <Link to="#">

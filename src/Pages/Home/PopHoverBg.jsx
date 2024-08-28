@@ -3,6 +3,7 @@ import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react';
 import axios from 'axios';
 import { menuhover } from '../../Js/navbarmenu';
 
+
 const PopHoverBg = () => {
     const baseURL = 'https://image.tmdb.org/t/p/w500';
     const [popular, Setpopular] = useState([]);
@@ -50,7 +51,7 @@ const PopHoverBg = () => {
             <TabGroup className="mt-[20px] p-[20px]">
                 <TabList className="flex gap-4">
                     <div className='items-center flex gap-[20px]'>
-                        <h1 className='font-[600] text-[22px] mt-[-5px] text-whitei'>Latest Trailers</h1>
+                        <h1 className='font-[600] text-[22px] mt-[-5px] text-white'>Latest Trailers</h1>
                         <div className='gap-0 rounded-full border-teal-600 border-[2px]'>
                             {menuhover.map(({ name }) => (
                                 <Tab

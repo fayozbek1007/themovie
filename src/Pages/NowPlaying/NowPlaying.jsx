@@ -1,30 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import { MdArrowForwardIos } from "react-icons/md";
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { MdArrowForwardIos } from "react-icons/md";
 import CircularProgressWithLabel from '../../components/Fozi/Foiz';
 import { Link } from 'react-router-dom';
 
-const Popular = () => {
-    const [data, setData] = useState([]);
+const NowPlaying = () => {
+    const [nowplay, SetNowPlay] = useState([]);
     const baseURL = 'https://image.tmdb.org/t/p/w500';
 
     useEffect(() => {
-        const fetchData = async () => {
+        const NowFetch = async () => {
             try {
-                const response = await axios.get('https://api.themoviedb.org/3/movie/popular?api_key=eafe1f3a13d089d87f149cb4c9b3ced2');
-                setData(response.data.results);
+                const nowres = await axios.get('https://api.themoviedb.org/3/movie/now_playing?api_key=eafe1f3a13d089d87f149cb4c9b3ced2');
+                SetNowPlay(nowres.data.results);
             } catch (error) {
-                console.error('Xatolik sodir bo‘ldi:', error);
+                console.error('Xatolik bor :', error);
             }
         };
-        fetchData();
+        NowFetch();
     }, []);
+
 
     return (
         <div className='w-[1400px] py-[30px] px-[40px] mx-[auto] my-0'>
-            <h1 className='font-[600] text-[27px]'>Popular Movies</h1>
+            <h1 className='font-[600] text-[27px]'>Now Playing Movies</h1>
             <div className='flex gap-[30px] mt-[20px]'>
-                <div className='w-[258.08px] h-[]'>
+                <div className='w-[258.08px]'>
                     <div className='flex items-center justify-between px-[16px] py-[14px] border-neutral-300 border-[1px] rounded-[8px] shadow-lg'>
                         <p className='text-[20px] font-[600]'>
                             Sort
@@ -50,8 +51,8 @@ const Popular = () => {
                     </button>
                 </div>
                 <div className='w-[1052px] grid grid-cols-5'>
-                    {data.map(movie => (
-                        <Link to={`/movie/${movie.id}`} key={movie.id}>
+                    {nowplay.map(movie => (
+                        <Link to={`/movie/${movie.id}`} key={movie.id}> 
                             <div className='shadow-lg inline-block w-[181px] truncate mr-5 border-[1px] border-b-slate-400 rounded-[8px] mb-[30px]'>
                                 <img
                                     className='w-[181px] h-[273px] rounded-lg'
@@ -75,8 +76,8 @@ const Popular = () => {
                     </div>
                 </div>
             </div>
-        </div >
+        </div>
     );
 }
 
-export default Popular;
+export default NowPlaying;

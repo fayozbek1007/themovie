@@ -2,6 +2,7 @@ import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import CircularProgressWithLabel from '../../components/Fozi/Foiz';
 
 const FreeWatch = () => {
     const [free, setFree] = useState([]);
@@ -15,7 +16,6 @@ const FreeWatch = () => {
                 const response = await axios.get('https://api.themoviedb.org/3/trending/tv/day?api_key=eafe1f3a13d089d87f149cb4c9b3ced2');
 
                 setFree(response.data.results);
-                console.log(response.data.results);
             } catch (error) {
                 console.error('Xatolik yuz berdi:', error);
             }
@@ -28,7 +28,7 @@ const FreeWatch = () => {
             try {
                 const responseTV = await axios.get('https://api.themoviedb.org/3/trending/tv/week?api_key=eafe1f3a13d089d87f149cb4c9b3ced2');
                 setFreetv(responseTV.data.results);
-                console.log(responseTV.data.results);
+                // console.log(responseTV.data.results);
             } catch (error) {
                 console.log('Xatolik yuz berdi:', error);
             }
@@ -77,6 +77,9 @@ const FreeWatch = () => {
                                                 src={`${baseURL}${tvShow.poster_path}`}
                                                 alt={tvShow.name}
                                             />
+                                            <div className='z-[2] mt-[-20px] ml-[10px]'>
+                                                <CircularProgressWithLabel value={tvShow.vote_average * 10} />
+                                            </div>
                                             <div className='mt-2 p-2 w-[150px] h-[70px] overflow-hidden'>
                                                 <h1 className='text-sm font-bold truncate'>{tvShow.name}</h1>
                                                 <p className='text-xs'>{tvShow.first_air_date}</p>
@@ -99,6 +102,9 @@ const FreeWatch = () => {
                                             src={`${baseURL}${movie.poster_path}`}
                                             alt={movie.name}
                                         />
+                                        <div className='z-[2] mt-[-20px] ml-[10px]'>
+                                            <CircularProgressWithLabel value={movie.vote_average * 10} />
+                                        </div>
                                         <div className='mt-2 p-2 w-[150px] h-[70px] overflow-hidden'>
                                             <h1 className='text-sm font-bold truncate'>{movie.overview}</h1>
                                             <p className='text-xs'>{movie.first_air_date}</p>

@@ -1,28 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import { MdArrowForwardIos } from "react-icons/md";
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { MdArrowForwardIos } from "react-icons/md";
 import CircularProgressWithLabel from '../../components/Fozi/Foiz';
 import { Link } from 'react-router-dom';
 
-const Popular = () => {
-    const [data, setData] = useState([]);
+const OnTv = () => {
+    const [nowplay, SetNowPlay] = useState([]);
     const baseURL = 'https://image.tmdb.org/t/p/w500';
 
     useEffect(() => {
-        const fetchData = async () => {
+        const OnTvFetch = async () => {
             try {
-                const response = await axios.get('https://api.themoviedb.org/3/movie/popular?api_key=eafe1f3a13d089d87f149cb4c9b3ced2');
-                setData(response.data.results);
+                const nowres = await axios.get('https://api.themoviedb.org/3/tv/on_the_air?api_key=eafe1f3a13d089d87f149cb4c9b3ced2');
+                SetNowPlay(nowres.data.results);
+                console.log("AiringToday", nowres.data.results);
             } catch (error) {
-                console.error('Xatolik sodir bo‘ldi:', error);
+                console.error('Xatolik bor :', error);
             }
         };
-        fetchData();
+        OnTvFetch();
     }, []);
+
 
     return (
         <div className='w-[1400px] py-[30px] px-[40px] mx-[auto] my-0'>
-            <h1 className='font-[600] text-[27px]'>Popular Movies</h1>
+            <h1 className='font-[600] text-[27px]'>Top Rated Movies</h1>
             <div className='flex gap-[30px] mt-[20px]'>
                 <div className='w-[258.08px] h-[]'>
                     <div className='flex items-center justify-between px-[16px] py-[14px] border-neutral-300 border-[1px] rounded-[8px] shadow-lg'>
@@ -50,20 +52,20 @@ const Popular = () => {
                     </button>
                 </div>
                 <div className='w-[1052px] grid grid-cols-5'>
-                    {data.map(movie => (
+                    {nowplay.map(movie => (
                         <Link to={`/movie/${movie.id}`} key={movie.id}>
                             <div className='shadow-lg inline-block w-[181px] truncate mr-5 border-[1px] border-b-slate-400 rounded-[8px] mb-[30px]'>
                                 <img
                                     className='w-[181px] h-[273px] rounded-lg'
                                     src={`${baseURL}${movie.poster_path}`}
-                                    alt={movie.title}
+                                    alt={movie.name}
                                 />
                                 <div className='z-[2] mt-[-20px] ml-[10px]'>
                                     <CircularProgressWithLabel value={movie.vote_average * 10} />
                                 </div>
                                 <div className='mt-2 p-2 w-[150px] h-[70px] overflow-hidden'>
-                                    <h1 className='text-[18px] font-bold truncate'>{movie.title}</h1>
-                                    <p className='text-xs'>{movie.release_date}</p>
+                                    <h1 className='text-[18px] font-bold truncate'>{movie.name}</h1>
+                                    <p className='text-[17px] text-[#00000090]'>{movie.first_air_date}</p>
                                 </div>
                             </div>
                         </Link>
@@ -75,8 +77,8 @@ const Popular = () => {
                     </div>
                 </div>
             </div>
-        </div >
+        </div>
     );
 }
 
-export default Popular;
+export default OnTv;

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'; // Link import qilamiz
+import { Link } from 'react-router-dom';
 import { categories } from '../../Js/navbarmenu';
 import PopHoverBg from './PopHoverBg';
 import Search from '../../components/Search/search';
 import FreeWatch from './FreeWatch';
+import CircularProgressWithLabel from '../../components/Fozi/Foiz';
 
 const Home = () => {
     const [data, setData] = useState([]);
@@ -72,7 +73,7 @@ const Home = () => {
                     {categories.map(({ name }) => (
                         <div key={name}>
                             <TabPanel className="rounded-xl p-3">
-                                <div className='overflow-x-auto whitespace-nowrap gap-[20px] snap-x-[30px] w-full scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-transparent'>
+                                <div className=' overflow-x-auto whitespace-nowrap gap-[20px] snap-x-[30px] w-full scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-transparent'>
                                     {data.map(movie => (
                                         <Link to={`/movie/${movie.id}`} key={movie.id}>
                                             <div className='inline-block w-[150px] truncate mr-5'>
@@ -81,8 +82,11 @@ const Home = () => {
                                                     src={`${baseURL}${movie.poster_path}`}
                                                     alt={movie.title}
                                                 />
+                                                <div className='z-[2] mt-[-20px] ml-[10px]'>
+                                                    <CircularProgressWithLabel value={movie.vote_average * 10} />
+                                                </div>
                                                 <div className='mt-2 p-2 w-[150px] h-[70px] overflow-hidden'>
-                                                    <h1 className='text-sm font-bold truncate'>{movie.title}</h1>
+                                                    <h1 className='text-sm font-bold truncate text-[#3e3b3b]'>{movie.title}</h1>
                                                     <p className='text-xs'>{movie.release_date}</p>
                                                 </div>
                                             </div>
@@ -100,6 +104,9 @@ const Home = () => {
                                                     className='w-[150px] h-[225px] rounded-lg'
                                                     src={`${baseURL}${person.backdrop_path}`} alt={person.title}
                                                 />
+                                                <div className='z-[2] mt-[-20px] ml-[10px]'>
+                                                    <CircularProgressWithLabel value={person.vote_average * 10} />
+                                                </div>
                                                 <div className='mt-2 p-2 w-[150px] h-[70px] overflow-hidden'>
                                                     <h1 className='text-sm font-bold truncate'>{person.title}</h1>
                                                     <p className='text-xs'>{person.release_date}</p>
