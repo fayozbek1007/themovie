@@ -65,8 +65,7 @@ const AiringToday = () => {
                                 </div>
                                 <div className='mt-2 p-2 w-[150px] h-[70px] overflow-hidden'>
                                     <h1 className='text-[18px] font-bold truncate'>{movie.original_name}</h1>
-                                    <p className='text-xs'>{movie.
-                                        first_air_date
+                                    <p className='text-xs'>{movie.first_air_date
                                     }</p>
                                 </div>
                             </div>

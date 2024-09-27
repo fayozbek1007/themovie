@@ -13,21 +13,15 @@ import TopRated from './Pages/TopRated/TopRated';
 import AiringToday from './Pages/AiringToday/AiringToday';
 import OnTv from './Pages/OnTv/OnTv';
 import AboutPopularPeople from './Pages/AboutPopularPeopl/AboutPopularPeople';
-import { Suspense } from 'react'; 
-import './Js/i18n'; 
-import { useTranslation } from 'react-i18next'; 
+import { Suspense } from 'react';
+import './Js/i18n';
 
 function App() {
-  const { t, i18n } = useTranslation(); 
-
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
-  };
 
   return (
     <Suspense fallback={<div>Yuklanmoqda...</div>}>
       <BrowserRouter>
-        
+
         <Routes>
           <Route element={<DashNavFootOut />} >
             <Route path='/' element={<Home />} />

@@ -6,7 +6,6 @@ import CircularProgressWithLabel from '../../components/Fozi/Foiz';
 const AboutMovie = () => {
     const { id } = useParams();
     const [movie, setMovie] = useState(null);
-    const [actyor, Setactyor] = useState(null)
     const baseURL = 'https://image.tmdb.org/t/p/w500';
 
     useEffect(() => {
@@ -22,17 +21,6 @@ const AboutMovie = () => {
         fetchMovie();
     }, [id]);
 
-    useEffect(() => {
-        const Personfetch = async () => {
-            try {
-                const personpop = await axios.get('https://api.themoviedb.org/3/movie/${id}?api_key=eafe1f3a13d089d87f149cb4c9b3ced2');
-                Setactyor(personpop.data);
-            } catch (error) {
-                console.log('Xatolik bor :', error);
-            }
-        };
-        Personfetch();
-    }, []);
 
     if (!movie) {
         return <div>Yuklanmoqda...</div>;

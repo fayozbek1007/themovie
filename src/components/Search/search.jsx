@@ -6,6 +6,7 @@ const Search = () => {
     const [backgroundImage, setBackgroundImage] = useState('');
     const [currentIndex, setCurrentIndex] = useState(0);
     const [popularMovies, setPopularMovies] = useState([]);
+    console.log(currentIndex);
 
     const serchref = useRef();
     const usnavget = useNavigate();
