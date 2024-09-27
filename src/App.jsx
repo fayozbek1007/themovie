@@ -27,12 +27,7 @@ function App() {
   return (
     <Suspense fallback={<div>Yuklanmoqda...</div>}>
       <BrowserRouter>
-        <div>
-          <button onClick={() => changeLanguage('en')}>English</button>
-          <button onClick={() => changeLanguage('es')}>Español</button>
-          <button onClick={() => changeLanguage('fr')}>Français</button>
-          <button onClick={() => changeLanguage('ru')}>Русский</button>
-        </div>
+        
         <Routes>
           <Route element={<DashNavFootOut />} >
             <Route path='/' element={<Home />} />

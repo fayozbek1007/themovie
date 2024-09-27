@@ -14,9 +14,9 @@ export const navbarmenu = [
       title: "tvShows",
       dashint: [
         { id: 1, dashtitle: "popular" },
-        { id: 2, dashtitle: "airingToday" },
+        { id: 2, dashtitle: "airing-Today" },
         { id: 3, dashtitle: "onTV" },
-        { id: 4, dashtitle: "topRated" },
+        { id: 4, dashtitle: "top-Rated" },
       ],
     },
     {

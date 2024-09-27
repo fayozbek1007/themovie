@@ -22,17 +22,17 @@ const Navbar = () => {
                     <div>
                         <ul className="flex list-none p-0 m-0">
                             {navbarmenu.map((menu) => (
-                                <li key={menu.id} className="gap-[10px] relative group mr-5 ">
+                                <li key={menu.id} className="gap-[10px] w-[70px] relative group mr-5 ">
                                     <a href="#" className="pl-[5px] block text-white">
                                         {t(menu.title)}
                                     </a>
                                     {menu.dashint && menu.dashint.length > 0 && (
-                                        <ul className="absolute left-0 mt-[0] hidden w-40 rounded-[10px] bg-white shadow-lg group-hover:block overflow-hidden">
+                                        <ul className="absolute left-0 mt-[0] w-40 hidden  rounded-[10px] bg-white shadow-lg group-hover:block overflow-hidden ">
                                             {menu.dashint.map((dash) => (
-                                                <li key={dash.id}>
+                                                <li key={dash.id} className='w-[500px]'>
                                                     <Link
                                                         to={`/${dash.dashtitle.toLowerCase().replace(/\s/g, '-')}`}
-                                                        className="block px-4 py-2 text-black hover:bg-gray-200"
+                                                        className="block px-4 py-2 text-black hover:bg-gray-200 w-full"
                                                     >
                                                         {t(dash.dashtitle)}
                                                     </Link>

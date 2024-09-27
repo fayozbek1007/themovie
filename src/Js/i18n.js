@@ -33,7 +33,7 @@ i18n.use(initReactI18next).init({
         "home": "Bosh sahifa",
         "search": "Qidiruv",
         "movies": "Filmlar",
-        "tvShows": "TV Ko'rsatuvlar",
+        "tvShows": "TV Ko'r..",
         "people": "Odamlar",
         "more": "Ko'proq",
         "popular": "Mashhur",
@@ -100,12 +100,10 @@ i18n.use(initReactI18next).init({
       }
     },
   },
-  lng: "uz",
-  fallbackLng: "uz", 
+  lng: "eng",
+  fallbackLng: "eng", 
   interpolation: {
     escapeValue: false,
   },
 });
-g
 export default i18n;
-https://github.com/fayozbek1007/The-Movie.gitgit 
