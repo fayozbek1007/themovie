@@ -32,7 +32,7 @@ function App() {
             <Route path='/top-rated' element={<TopRated />} />
             <Route path='/airing-today' element={<AiringToday />} />
             <Route path='/on-tv' element={<OnTv />} />
-            <Route path='/popular--people' element={<PopPeople />} />
+            <Route path='/popular-people' element={<PopPeople />} />
             <Route path='person/:id' element={<AboutPopularPeople />} />
             <Route path='/movie/:id' element={<AboutMovie />} />
             <Route path='/popular/:id' element={<AboutPopular />} />

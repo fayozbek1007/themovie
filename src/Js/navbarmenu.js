@@ -4,9 +4,9 @@ export const navbarmenu = [
       title: "movies",
       dashint: [
         { id: 1, dashtitle: "popular" },
-        { id: 2, dashtitle: "nowPlaying" },
+        { id: 2, dashtitle: "now-Playing" },
         { id: 3, dashtitle: "upcoming" },
-        { id: 4, dashtitle: "topRated" },
+        { id: 4, dashtitle: "top-Rated" },
       ],
     },
     {
@@ -15,14 +15,14 @@ export const navbarmenu = [
       dashint: [
         { id: 1, dashtitle: "popular" },
         { id: 2, dashtitle: "airing-Today" },
-        { id: 3, dashtitle: "onTV" },
+        { id: 3, dashtitle: "on-TV" },
         { id: 4, dashtitle: "top-Rated" },
       ],
     },
     {
       id: 3,
       title: "people",
-      dashint: [{ id: 1, dashtitle: "popularPeople" }],
+      dashint: [{ id: 1, dashtitle: "popular-people" }],
     },
     {
       id: 4,
