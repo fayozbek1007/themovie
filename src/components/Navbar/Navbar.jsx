@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next'; 
+import { useTranslation } from 'react-i18next';
 import { navbarmenu } from '../../Js/navbarmenu';
 
 const Navbar = () => {
-    const { t, i18n } = useTranslation(); 
-    const [showLanguages, setShowLanguages] = useState(false); 
+    const { t, i18n } = useTranslation();
+    const [showLanguages, setShowLanguages] = useState(false);
 
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
@@ -22,10 +22,8 @@ const Navbar = () => {
                     <div>
                         <ul className="flex list-none p-0 m-0">
                             {navbarmenu.map((menu) => (
-                                <li key={menu.id} className="gap-[10px] w-[70px] relative group mr-5 ">
-                                    <a href="#" className="pl-[5px] block text-white">
-                                        {t(menu.title)}
-                                    </a>
+                                <li key={menu.id} className="pl-[5px] block text-white gap-[10px] w-[70px] relative group mr-5 ">
+                                    {t(menu.title)}
                                     {menu.dashint && menu.dashint.length > 0 && (
                                         <ul className="absolute left-0 mt-[0] w-40 hidden  rounded-[10px] bg-white shadow-lg group-hover:block overflow-hidden ">
                                             {menu.dashint.map((dash) => (
@@ -50,7 +48,7 @@ const Navbar = () => {
                     <div className="relative">
                         <button
                             className='bg-none border-white border-[1px] py-[2px] px-[5px] rounded-[5px] hover:bg-white text-[16px] text-white font-[600] hover:text-[rgb(3,37,65)]'
-                            onClick={() => setShowLanguages(!showLanguages)} 
+                            onClick={() => setShowLanguages(!showLanguages)}
                         >
                             {i18n.language.toUpperCase()}
                         </button>
