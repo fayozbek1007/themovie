@@ -13,36 +13,36 @@ const Footer = () => {
                 <div className='text-[white] ml-[-5px]'>
                     <h4 className='font-[700] text-[18px]'>THE BASICS</h4>
                     <ul>
-                        <li className='font-[400] text-[15.28px] mt-[1px]'><a href="#">About TMDB</a></li>
-                        <li className='font-[400] text-[15.28px] mt-[1px]'><a href="#">Contact Us</a></li>
-                        <li className='font-[400] text-[15.28px] mt-[1px]'><a href="#">Support Forums</a></li>
-                        <li className='font-[400] text-[15.28px] mt-[1px]'><a href="#">API</a></li>
-                        <li className='font-[400] text-[15.28px] mt-[1px]'><a href="#">System Status</a></li>
+                        <li className='font-[400] text-[15.28px] mt-[1px]'>About TMDB</li>
+                        <li className='font-[400] text-[15.28px] mt-[1px]'>Contact Us</li>
+                        <li className='font-[400] text-[15.28px] mt-[1px]'>Support Forums</li>
+                        <li className='font-[400] text-[15.28px] mt-[1px]'>API</li>
+                        <li className='font-[400] text-[15.28px] mt-[1px]'>System Status</li>
                     </ul>
                 </div>
                 <div className='text-[white]'>
                     <h4 className='font-[700]'>GET INVOLVED</h4>
                     <ul>
-                        <li><a href="#"> Contribution Bible</a></li>
-                        <li><a href="#">Add New Movie</a></li>
-                        <li><a href="#">Add New TV Show</a></li>
+                        <li> Contributio</li>
+                        <li>Add Ne</li>
+                        <li>Add New </li>
                     </ul>
                 </div>
                 <div className='text-[white]'>
                     <h4 className='font-[700] text-[18px]'>Community</h4>
                     <ul>
-                        <li><a href="#">Guidelines</a></li>
-                        <li><a href="#">Discussions</a></li>
-                        <li><a href="#">Leaderboard</a></li>
+                        <li>Gui</li>
+                        <li>Disc</li>
+                        <li>Lead</li>
                     </ul>
                 </div>
                 <div className='text-[white]'>
                     <h4 className='font-[700] text-[18px]'>Legal</h4>
                     <ul>
-                        <li><a href="#">Terms of Use</a></li>
-                        <li><a href="#">API Terms of Use</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">DMCA Policy</a></li>
+                        <li>Terms</li>
+                        <li>API Terms</li>
+                        <li>Privacy</li>
+                        <li>DMCA</li>
                     </ul>
                 </div>
             </div>
